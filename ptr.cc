@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <map>
 #include <list>
+#include <thread>
 using namespace std;
 
 class A
@@ -77,21 +78,32 @@ public:
 };
 
 
-int main()
-{
-    // LruCache<xxxx*> lru(1000);
-    // for (int i = 0; i < 1000000; i++)
-    // {
-    //     lru.put(i, new xxxx());
-    // }
-    // return 0;
-    std::list<std::shared_ptr<A>>  ls;
-    std::cout << __LINE__  << " ---------" << std::endl;
-    x(ls);
-    std::cout << __LINE__  << " ---------" << std::endl;
-    ls.push_back(o(3000));
-    std::cout << __LINE__  << " ---------" << std::endl;
-    o(4000);
-    //std::shared_ptr<A> ptr = o(1000);
-    std::cout << " hello world" << std::endl;
+
+
+void f1(int n) {
+    for(int i = 0; i < 100;i++) {
+        sleep(1);
+        std::cout << " thread is:" << n << std::endl;
+    }
 }
+
+void testThread() {
+    std::thread t1(f1, 1);
+    std::thread t2(f1, 100);
+    std::thread t3(f1, 30);
+}
+
+
+int main() {
+    // srand(time(NULL));
+    // for(int i = 0; i < 1000; i++) {
+    //     std::cout << rand() %1000 << std::endl;
+    // }
+    testThread();
+}
+
+
+
+
+
+
