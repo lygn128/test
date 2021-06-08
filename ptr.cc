@@ -94,12 +94,30 @@ void testThread() {
 }
 
 
+void testThread2() {
+    int a; 
+    std::thread t1([](int a) {
+
+    },std::ref(a));
+    t1.join();
+}
+
+void increase(std::atomic<long> &at) {
+    at++;
+}
+void testatomic() {
+    std::atomic<long> xxx{0};
+
+}
+
+
 int main() {
     // srand(time(NULL));
     // for(int i = 0; i < 1000; i++) {
     //     std::cout << rand() %1000 << std::endl;
     // }
-    testThread();
+    //testThread2();
+    testatomic();
 }
 
 
