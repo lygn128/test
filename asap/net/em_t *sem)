@@ -1,0 +1,51 @@
+SEM_POST(3)                                            Linux Programmer's Manual                                           SEM_POST(3)
+
+NNAAMMEE
+       sem_post - unlock a semaphore
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee <<sseemmaapphhoorree..hh>>
+
+       iinntt sseemm__ppoosstt((sseemm__tt **_s_e_m));;
+
+       Link with _-_p_t_h_r_e_a_d.
+
+DDEESSCCRRIIPPTTIIOONN
+       sseemm__ppoosstt()  increments  (unlocks)  the semaphore pointed to by _s_e_m.  If the semaphore's value consequently becomes greater than
+       zero, then another process or thread blocked in a sseemm__wwaaiitt(3) call will be woken up and proceed to lock the semaphore.
+
+RREETTUURRNN VVAALLUUEE
+       sseemm__ppoosstt() returns 0 on success; on error, the value of the semaphore is left unchanged, -1 is returned, and _e_r_r_n_o  is  set  to
+       indicate the error.
+
+EERRRROORRSS
+       EEIINNVVAALL _s_e_m is not a valid semaphore.
+
+       EEOOVVEERRFFLLOOWW
+              The maximum allowable value for a semaphore would be exceeded.
+
+AATTTTRRIIBBUUTTEESS
+       For an explanation of the terms used in this section, see aattttrriibbuutteess(7).
+
+       ┌───────────┬───────────────┬─────────┐
+       │IInntteerrffaaccee  │ AAttttrriibbuuttee     │ VVaalluuee   │
+       ├───────────┼───────────────┼─────────┤
+       │sseemm__ppoosstt() │ Thread safety │ MT-Safe │
+       └───────────┴───────────────┴─────────┘
+CCOONNFFOORRMMIINNGG TTOO
+       POSIX.1-2001.
+
+NNOOTTEESS
+       sseemm__ppoosstt() is async-signal-safe: it may be safely called within a signal handler.
+
+EEXXAAMMPPLLEE
+       See sseemm__wwaaiitt(3).
+
+SSEEEE AALLSSOO
+       sseemm__ggeettvvaalluuee(3), sseemm__wwaaiitt(3), sseemm__oovveerrvviieeww(7), ssiiggnnaall--ssaaffeettyy(7)
+
+CCOOLLOOPPHHOONN
+       This  page  is  part of release 4.15 of the Linux _m_a_n_-_p_a_g_e_s project.  A description of the project, information about reporting
+       bugs, and the latest version of this page, can be found at https://www.kernel.org/doc/man-pages/.
+
+Linux                                                         2017-03-13                                                   SEM_POST(3)

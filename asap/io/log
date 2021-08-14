@@ -1,0 +1,17 @@
+dump ret: 1
+fd2 = 4
+size of 54190  994
+open dir suc
+. 57612
+.. 57612
+.git 86153
+a.txt 247025
+asap 247026
+cast.cc 247039
+CMakeLists.txt 247010
+core 247040
+ketama_hash.cc 247046
+ptr.cc 247047
+raft 247048
+testcpp.cc 247126
+thread_local.cc 247127
